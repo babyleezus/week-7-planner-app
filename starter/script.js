@@ -19,14 +19,15 @@ $(document).ready(function() {
 
   $('#currentDay').text(today.format('dddd Do MMMM YYYY'));
 
-  var currentHour = moment().hour();
+  var currentHour = 12 //moment().hour();
 
   let text = $('textarea').val(); //does this get the value inputted into all the 
 
 
 
-  $.each('.row', function()){
-    var timeblock = parseInt($(this).siblings(".hour").text()); //dont understand what this is supposed to do 
+  $(".row").each(function(){
+    var timeblock = parseInt($(this).children(".col-md-2").attr('id')); //dont understand what this is supposed to do 
+    console.log(timeblock, currentHour, $(this))
   if (timeblock < currentHour) { 
         $(this).addClass("past"); 
     } else if (timeblock === currentHour) {
@@ -34,7 +35,7 @@ $(document).ready(function() {
     } else {
         $(this).addClass("future"); 
     }
-  }
+  })
 
   $('')
 
